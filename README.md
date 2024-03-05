@@ -20,3 +20,7 @@ A part from the features provided by LazyVim, this custom environment includes:
   - LaTeX
   - Typescript
   - YAML
+
+## To add in future
+
+- [ ] Devcontainer support + Docker container development

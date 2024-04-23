@@ -20,6 +20,7 @@ A part from the features provided by LazyVim, this custom environment includes:
   - LaTeX
   - Typescript
   - YAML
+  - Dafny (for deductive verification)
 
 ## To add in future
 

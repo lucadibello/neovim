@@ -1,0 +1,3 @@
+clear:
+	@./scripts/clean.sh
+

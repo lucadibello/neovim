@@ -4,8 +4,17 @@ return {
     "rebelot/kanagawa.nvim",
     priority = 1000,
     opts = {
-      theme = "dragon",
-      transparent = true,
+      undercurl = true, -- enable undercurls
+      commentStyle = { italic = true },
+      functionStyle = { italic = true },
+      keywordStyle = { italic = true },
+      statementStyle = { bold = true },
+      typeStyle = { bold = true },
+      dim_inactive = true,
+      background = {
+        dark = "dragon",
+        light = "lotus",
+      },
     },
   },
 

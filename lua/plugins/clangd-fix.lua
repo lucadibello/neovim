@@ -3,9 +3,14 @@ return {
   "neovim/nvim-lspconfig",
   opts = {
     setup = {
-      clangd = function(_, opts)
-        opts.capabilities.offsetEncoding = { "utf-16" }
-      end,
+      clangd = {
+        -- opts.capabilities.offsetEncoding = { "utf-16" }
+        capabilities = {
+          offsetEncoding = { "utf-16" },
+        },
+      }
     },
+    -- define supported filetypes
+    filetypes = { "c", "cpp", "objcpp" }, -- Disables protobuf!
   },
 }

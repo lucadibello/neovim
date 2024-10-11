@@ -1,12 +1,19 @@
 return {
-  -- add catppuccin colorscheme
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  -- add kanagawa colorscheme
+  {
+    "rebelot/kanagawa.nvim",
+    priority = 1000,
+    opts = {
+      theme = "dragon",
+      transparent = true,
+    },
+  },
 
-  -- Configure LazyVim to load gruvbox
+  -- Configure LazyVim to use the kanagawa colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin-mocha",
+      colorscheme = "kanagawa-dragon",
     },
   },
 }

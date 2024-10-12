@@ -1,5 +1,5 @@
 return {
-  -- add kanagawa colorscheme
+  -- add rose-pine colorscheme
   {
     "rebelot/kanagawa.nvim",
     priority = 1000,
@@ -11,10 +11,7 @@ return {
       statementStyle = { bold = true },
       typeStyle = { bold = true },
       dim_inactive = true,
-      background = {
-        dark = "dragon",
-        light = "lotus",
-      },
+      transparent = true,
     },
   },
 

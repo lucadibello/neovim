@@ -11,7 +11,7 @@ return {
       statementStyle = { bold = true },
       typeStyle = { bold = true },
       dim_inactive = true,
-      transparent = true,
+      transparent = false,
     },
   },
 

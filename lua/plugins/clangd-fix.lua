@@ -11,6 +11,6 @@ return {
       }
     },
     -- define supported filetypes
-    filetypes = { "c", "cpp", "objcpp" }, -- Disables protobuf!
+    -- filetypes = { "c", "cpp", "objcpp" }, -- Disables protobuf!
   },
 }

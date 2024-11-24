@@ -4,13 +4,10 @@ return {
   opts = {
     setup = {
       clangd = {
-        -- opts.capabilities.offsetEncoding = { "utf-16" }
         capabilities = {
           offsetEncoding = { "utf-16" },
         },
       }
     },
-    -- define supported filetypes
-    -- filetypes = { "c", "cpp", "objcpp" }, -- Disables protobuf!
   },
 }

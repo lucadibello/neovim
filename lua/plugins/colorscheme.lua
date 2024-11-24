@@ -1,17 +1,17 @@
 return {
-  -- add rose-pine colorscheme
+  -- add nightfox theme
   {
-    "rebelot/kanagawa.nvim",
+    "EdenEast/nightfox.nvim",
     priority = 1000,
     opts = {
-      undercurl = true, -- enable undercurls
-      commentStyle = { italic = true },
-      functionStyle = { italic = true },
-      keywordStyle = { italic = true },
-      statementStyle = { bold = true },
-      typeStyle = { bold = true },
-      dim_inactive = true,
       transparent = false,
+      terminal_colors = true,
+      dim_inactive = true,
+      styles = {
+        comments = "italic",
+        keywords = "bold",
+        types = "italic,bold",
+      },
     },
   },
 
@@ -19,7 +19,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "kanagawa-dragon",
+      colorscheme = "carbonfox",
     },
   },
 }

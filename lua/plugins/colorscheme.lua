@@ -1,25 +1,17 @@
 return {
-  -- add nightfox theme
+  -- tokyonight.nvim theme
   {
-    "EdenEast/nightfox.nvim",
+    "folke/tokyonight.nvim",
+    lazy = false,
     priority = 1000,
-    opts = {
-      transparent = false,
-      terminal_colors = true,
-      dim_inactive = true,
-      styles = {
-        comments = "italic",
-        keywords = "bold",
-        types = "italic,bold",
-      },
-    },
+    opts = {},
   },
 
   -- Configure LazyVim to use the kanagawa colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "carbonfox",
+      colorscheme = "tokyonight-night",
     },
   },
 }

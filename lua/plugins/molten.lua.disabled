@@ -44,20 +44,20 @@ return {
       keymap("n", "<localleader>rs", ":MoltenRestartKernel<CR>", { desc = "restart kernel", silent = true })
 
       -- Auto command to attach molten to Python and ipynb files
-      -- vim.api.nvim_create_autocmd("BufEnter", {
-      --   pattern = { "*.ipynb", "*.py" },
-      --   callback = function()
-      --     vim.cmd("MoltenInit")
-      --   end,
-      -- })
+      vim.api.nvim_create_autocmd("BufEnter", {
+        pattern = { "*.ipynb", "*.py" },
+        callback = function()
+          vim.cmd("MoltenInit")
+        end,
+      })
 
       -- Automatically save output when leaving a buffer (optional)
-      -- vim.api.nvim_create_autocmd("BufLeave", {
-      --   pattern = { "*.ipynb", "*.py" },
-      --   callback = function()
-      --     vim.cmd("MoltenSave")
-      --   end,
-      -- })
+      vim.api.nvim_create_autocmd("BufLeave", {
+        pattern = { "*.ipynb", "*.py" },
+        callback = function()
+          vim.cmd("MoltenSave")
+        end,
+      })
     end,
   },
 }

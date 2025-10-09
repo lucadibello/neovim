@@ -6,3 +6,6 @@ debug
 foo.*
 *.log
 data
+
+# avoid versioning lock file - other devices may use different versions of nvim
+lazy-lock.json

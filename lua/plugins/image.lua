@@ -1,7 +1,7 @@
 return {
   {
     "3rd/image.nvim",
-    enabled = false, -- WARNING: this plugin has been known to cause Neovim to hang in some situations
+    -- enabled = true, -- WARNING: this plugin has been known to cause Neovim to hang in some situations
     dependencies = {
       {
         "vhyrro/luarocks.nvim",
@@ -58,11 +58,11 @@ return {
 
         -- This is what I changed to make my images look smaller, like a
         -- thumbnail, the default value is 50
-        -- max_height_window_percentage = 20,
-        max_height_window_percentage = 40,
+        max_height_window_percentage = math.huge, -- NOTE: this is necessary for a good experience
+        max_width_window_percentage = math.huge,
 
         -- toggles images when windows are overlapped
-        window_overlap_clear_enabled = false,
+        window_overlap_clear_enabled = true,
         window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
 
         -- auto show/hide images when the editor gains/looses focus

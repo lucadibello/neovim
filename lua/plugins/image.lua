@@ -18,7 +18,7 @@ return {
           -- Notice these are the settings for markdown files
           markdown = {
             enabled = true,
-            clear_in_insert_mode = false,
+            clear_in_insert_mode = true,
             -- Set this to false if you don't want to render images coming from
             -- a URL
             download_remote_images = true,
@@ -28,7 +28,7 @@ return {
             -- it will be laggy and will take time for the initial load
             only_render_image_at_cursor = true,
             -- markdown extensions (ie. quarto) can go here
-            filetypes = { "markdown", "vimwiki" },
+            filetypes = { "markdown", "vimwiki", "quarto", "qmd" },
           },
           neorg = {
             enabled = true,
@@ -52,8 +52,8 @@ return {
             enabled = true,
           },
         },
-        max_width = nil,
-        max_height = nil,
+        max_width = 200,
+        max_height = 90,
         max_width_window_percentage = nil,
 
         -- This is what I changed to make my images look smaller, like a

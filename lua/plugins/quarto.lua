@@ -35,7 +35,7 @@ return {
 
       -- Start Python LSP for code blocks inside Quarto via Otter
       vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "quarto", "qmd" },
+        pattern = { "quarto", "qmd", "jupyter", "ipynb" },
         callback = function()
           local ok, otter = pcall(require, "otter")
           if not ok then
@@ -45,12 +45,6 @@ return {
           otter.activate({ "python" }, true, true)
         end,
       })
-
-      vim.api.nvim_create_user_command("QuartoVenvSelect", function()
-        require("util.quarto_venv").select()
-      end, {})
-
-      vim.keymap.set("n", "<leader>qv", "<cmd>QuartoVenvSelect<CR>", { desc = "Quarto: Select Python venv" })
     end,
   },
 

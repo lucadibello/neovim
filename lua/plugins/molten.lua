@@ -29,10 +29,27 @@ return {
         end,
         desc = "Stop molten",
       },
-      { "<localleader>mp", "<cmd>MoltenImagePopup<CR>", desc = "Molten image popup" },
-      { "<localleader>mb", "<cmd>MoltenOpenInBrowser<CR>", desc = "Molten open in browser" },
-      { "<localleader>mh", "<cmd>MoltenHideOutput<CR>", desc = "Molten hide output" },
-      { "<localleader>ms", "<cmd>noautocmd MoltenEnterOutput<CR>", desc = "Molten show/enter output" },
+      { "<localleader>me", ":MoltenEvaluateOperator<CR>", desc = "Run operator selection", silent = true },
+      { "<localleader>ml", ":MoltenEvaluateLine<CR>", desc = "Evaluate line", silent = true },
+      { "<localleader>mr", ":MoltenReevaluateCell<CR>", desc = "Re-evaluate cell", silent = true },
+      {
+        "<localleader>mR",
+        ":<C-u>MoltenEvaluateVisual<CR>gv",
+        desc = "Evaluate visual selection",
+        silent = true,
+      },
+      { "<localleader>md", ":MoltenDelete<CR>", desc = "Molten delete cell", silent = true },
+      { "<localleader>mh", ":MoltenHideOutput<CR>", desc = "Hide output", silent = true },
+      { "<localleader>ms", ":noautocmd MoltenEnterOutput<CR>", desc = "Show/enter output", silent = true },
     },
   },
 }
+
+-- Suggested keybingings:
+-- vim.keymap.set("n", "<localleader>e", ":MoltenEvaluateOperator<CR>", { silent = true, desc = "run operator selection" })
+-- vim.keymap.set("n", "<localleader>rl", ":MoltenEvaluateLine<CR>", { silent = true, desc = "evaluate line" })
+-- vim.keymap.set("n", "<localleader>rr", ":MoltenReevaluateCell<CR>", { silent = true, desc = "re-evaluate cell" })
+-- vim.keymap.set("v", "<localleader>r", ":<C-u>MoltenEvaluateVisual<CR>gv", { silent = true, desc = "evaluate visual selection" })
+-- vim.keymap.set("n", "<localleader>rd", ":MoltenDelete<CR>", { silent = true, desc = "molten delete cell" })
+-- vim.keymap.set("n", "<localleader>oh", ":MoltenHideOutput<CR>", { silent = true, desc = "hide output" })
+-- vim.keymap.set("n", "<localleader>os", ":noautocmd MoltenEnterOutput<CR>", { silent = true, desc = "show/enter output" })

@@ -1,42 +1,38 @@
 return {
-  "benlubas/molten-nvim",
-  dev = false,
-  version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
-  ft = { "quarto", "python", "jupyter", "ipynb", "qmd" },
-  build = ":UpdateRemotePlugins",
-  init = function()
-    vim.g.molten_image_provider = "image.nvim"
-    -- vim.g.molten_output_win_max_height = 20
-    vim.g.molten_auto_open_output = true
-    vim.g.molten_auto_open_html_in_browser = true
-    vim.g.molten_tick_rate = 200
-  end,
-  config = function()
-    local init = function()
-      local quarto_cfg = require("quarto.config").config
-      quarto_cfg.codeRunner.default_method = "molten"
-      vim.cmd([[MoltenInit]])
-    end
-    local deinit = function()
-      local quarto_cfg = require("quarto.config").config
-      quarto_cfg.codeRunner.default_method = "slime"
-      vim.cmd([[MoltenDeinit]])
-    end
-    vim.keymap.set("n", "<localleader>mi", init, { silent = true, desc = "Initialize molten" })
-    vim.keymap.set("n", "<localleader>md", deinit, { silent = true, desc = "Stop molten" })
-    vim.keymap.set("n", "<localleader>mp", ":MoltenImagePopup<CR>", { silent = true, desc = "molten image popup" })
-    vim.keymap.set(
-      "n",
-      "<localleader>mb",
-      ":MoltenOpenInBrowser<CR>",
-      { silent = true, desc = "molten open in browser" }
-    )
-    vim.keymap.set("n", "<localleader>mh", ":MoltenHideOutput<CR>", { silent = true, desc = "hide output" })
-    vim.keymap.set(
-      "n",
-      "<localleader>ms",
-      ":noautocmd MoltenEnterOutput<CR>",
-      { silent = true, desc = "show/enter output" }
-    )
-  end,
+  {
+    "benlubas/molten-nvim",
+    dev = false,
+    ft = { "quarto", "python", "jupyter", "ipynb", "qmd" },
+    build = ":UpdateRemotePlugins",
+    init = function()
+      vim.g.molten_image_provider = "image.nvim"
+      vim.g.molten_auto_open_output = true
+      vim.g.molten_auto_open_html_in_browser = true
+      vim.g.molten_tick_rate = 200
+    end,
+    keys = {
+      {
+        "<localleader>mi",
+        function()
+          local cfg = require("quarto.config").config
+          cfg.codeRunner.default_method = "molten"
+          vim.cmd("MoltenInit")
+        end,
+        desc = "Initialize molten",
+      },
+      {
+        "<localleader>md",
+        function()
+          local cfg = require("quarto.config").config
+          cfg.codeRunner.default_method = "slime"
+          vim.cmd("MoltenDeinit")
+        end,
+        desc = "Stop molten",
+      },
+      { "<localleader>mp", "<cmd>MoltenImagePopup<CR>", desc = "Molten image popup" },
+      { "<localleader>mb", "<cmd>MoltenOpenInBrowser<CR>", desc = "Molten open in browser" },
+      { "<localleader>mh", "<cmd>MoltenHideOutput<CR>", desc = "Molten hide output" },
+      { "<localleader>ms", "<cmd>noautocmd MoltenEnterOutput<CR>", desc = "Molten show/enter output" },
+    },
+  },
 }

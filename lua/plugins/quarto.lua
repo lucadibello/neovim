@@ -5,7 +5,7 @@ return {
       "jmbuhr/otter.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
-    ft = { "quarto", "qmd", "jupyter", "ipynb" },
+    ft = { "quarto", "markdown", "qmd", "jupyter", "ipynb" },
     opts = {
       debug = false,
       closePreviewOnExit = true,
@@ -33,18 +33,43 @@ return {
     config = function(_, opts)
       require("quarto").setup(opts)
 
-      -- Start Python LSP for code blocks inside Quarto via Otter
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "quarto", "qmd", "jupyter", "ipynb" },
-        callback = function()
-          local ok, otter = pcall(require, "otter")
-          if not ok then
-            return
-          end
-          -- Attach only Python LSP to embedded code chunks
-          otter.activate({ "python" }, true, true)
-        end,
-      })
+      -- If you later want Otter to attach a Python LSP inside Quarto blocks, uncomment:
+      -- vim.api.nvim_create_autocmd("FileType", {
+      --   pattern = { "quarto", "qmd", "jupyter", "ipynb" },
+      --   callback = function()
+      --     local ok, otter = pcall(require, "otter")
+      --     if ok then otter.activate({ "python" }, true, true) end
+      --   end,
+      -- })
+    end,
+    keys = function()
+      local runner = function(fn)
+        return function()
+          require("quarto.runner")[fn]()
+        end
+      end
+      return {
+        -- run current cell
+        { "<localleader>rc", runner("run_cell"), desc = "Run cell", silent = true, mode = "n" },
+        -- run current + above
+        { "<localleader>ra", runner("run_above"), desc = "Run cell and above", silent = true, mode = "n" },
+        -- run all cells (current language)
+        { "<localleader>rA", runner("run_all"), desc = "Run all cells", silent = true, mode = "n" },
+        -- run current line
+        { "<localleader>rl", runner("run_line"), desc = "Run line", silent = true, mode = "n" },
+        -- run visual selection/range
+        { "<localleader>r", runner("run_range"), desc = "Run visual range", silent = true, mode = "v" },
+        -- run all cells of all languages
+        {
+          "<localleader>RA",
+          function()
+            require("quarto.runner").run_all(true)
+          end,
+          desc = "Run all cells (all languages)",
+          silent = true,
+          mode = "n",
+        },
+      }
     end,
   },
 

@@ -7,8 +7,16 @@ return {
     init = function()
       vim.g.molten_image_provider = "image.nvim"
       vim.g.molten_auto_open_output = true
-      vim.g.molten_auto_open_html_in_browser = true
+      vim.g.molten_auto_open_html_in_browser = false
       vim.g.molten_tick_rate = 200
+      vim.g.molten_wrap_output = true
+
+      -- -- Output as virtual text. Allows outputs to always be shown, works with images, but can
+      -- -- be buggy with longer images
+      vim.g.molten_virt_text_output = true
+
+      -- this will make it so the output shows up below the \`\`\` cell delimiter
+      vim.g.molten_virt_lines_off_by_1 = true
     end,
     keys = {
       {
@@ -41,15 +49,7 @@ return {
       { "<localleader>md", ":MoltenDelete<CR>", desc = "Molten delete cell", silent = true },
       { "<localleader>mh", ":MoltenHideOutput<CR>", desc = "Hide output", silent = true },
       { "<localleader>ms", ":noautocmd MoltenEnterOutput<CR>", desc = "Show/enter output", silent = true },
+      { "<localleader>mx", ":MoltenOpenInBrowser<CR>", desc = "Open output in browser", silent = true },
     },
   },
 }
-
--- Suggested keybingings:
--- vim.keymap.set("n", "<localleader>e", ":MoltenEvaluateOperator<CR>", { silent = true, desc = "run operator selection" })
--- vim.keymap.set("n", "<localleader>rl", ":MoltenEvaluateLine<CR>", { silent = true, desc = "evaluate line" })
--- vim.keymap.set("n", "<localleader>rr", ":MoltenReevaluateCell<CR>", { silent = true, desc = "re-evaluate cell" })
--- vim.keymap.set("v", "<localleader>r", ":<C-u>MoltenEvaluateVisual<CR>gv", { silent = true, desc = "evaluate visual selection" })
--- vim.keymap.set("n", "<localleader>rd", ":MoltenDelete<CR>", { silent = true, desc = "molten delete cell" })
--- vim.keymap.set("n", "<localleader>oh", ":MoltenHideOutput<CR>", { silent = true, desc = "hide output" })
--- vim.keymap.set("n", "<localleader>os", ":noautocmd MoltenEnterOutput<CR>", { silent = true, desc = "show/enter output" })

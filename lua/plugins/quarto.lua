@@ -30,18 +30,6 @@ return {
         never_run = { "yaml" },
       },
     },
-    config = function(_, opts)
-      require("quarto").setup(opts)
-
-      -- If you later want Otter to attach a Python LSP inside Quarto blocks, uncomment:
-      -- vim.api.nvim_create_autocmd("FileType", {
-      --   pattern = { "quarto", "qmd", "jupyter", "ipynb" },
-      --   callback = function()
-      --     local ok, otter = pcall(require, "otter")
-      --     if ok then otter.activate({ "python" }, true, true) end
-      --   end,
-      -- })
-    end,
     keys = function()
       local runner = function(fn)
         return function()

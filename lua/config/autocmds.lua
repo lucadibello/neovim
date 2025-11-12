@@ -9,7 +9,7 @@
 
 -- disable conceal in markdown files
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "markdown", "quarto", "pandoc" },
+  pattern = { "markdown", "quarto", "ipynb" },
   callback = function()
     vim.opt_local.conceallevel = 0
     vim.opt_local.concealcursor = ""
@@ -54,5 +54,14 @@ vim.api.nvim_create_autocmd("BufEnter", {
     if vim.api.nvim_get_vvar("vim_did_enter") ~= 1 then
       imb(e)
     end
+  end,
+})
+
+-- start otter when opening jupyter notebooks / quarto documents
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "*.ipynb", "*.qmd" },
+  callback = function()
+    local otter = require("otter")
+    otter.activate({ "python" }, true, true, nil)
   end,
 })

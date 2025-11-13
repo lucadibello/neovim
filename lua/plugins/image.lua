@@ -54,7 +54,6 @@ return {
         },
         max_width = 200,
         max_height = 90,
-        max_width_window_percentage = nil,
 
         -- This is what I changed to make my images look smaller, like a
         -- thumbnail, the default value is 50

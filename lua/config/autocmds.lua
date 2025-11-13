@@ -8,13 +8,13 @@
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
 -- disable conceal in markdown files
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "markdown", "quarto", "ipynb" },
-  callback = function()
-    vim.opt_local.conceallevel = 0
-    vim.opt_local.concealcursor = ""
-  end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = { "quarto", "ipynb" },
+--   callback = function()
+--     vim.opt_local.conceallevel = 0
+--     vim.opt_local.concealcursor = ""
+--   end,
+-- })
 
 -- automatically import output chunks from a jupyter notebook
 -- tries to find a kernel that matches the kernel in the jupyter notebook

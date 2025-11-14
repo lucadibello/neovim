@@ -3,3 +3,6 @@
 -- Add any additional options here
 
 vim.g.python3_host_prog = "~/.virtualenvs/neovim/bin/python"
+
+-- If no prettier config file is found, the formatter will not be used
+vim.g.lazyvim_prettier_needs_config = false

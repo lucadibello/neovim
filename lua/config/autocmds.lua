@@ -7,14 +7,13 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
--- disable conceal in markdown files
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = { "quarto", "ipynb" },
---   callback = function()
---     vim.opt_local.conceallevel = 0
---     vim.opt_local.concealcursor = ""
---   end,
--- })
+-- disable conceal level for ceratin files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "quarto", "ipynb", "copilot-chat" },
+  callback = function()
+    vim.opt_local.conceallevel = 0
+  end,
+})
 
 -- automatically import output chunks from a jupyter notebook
 -- tries to find a kernel that matches the kernel in the jupyter notebook

@@ -21,21 +21,15 @@ return {
     keys = {
       {
         "<localleader>mi",
-        function()
-          local cfg = require("quarto.config").config
-          cfg.codeRunner.default_method = "molten"
-          vim.cmd("MoltenInit")
-        end,
+        ":MoltenInit<CR>",
         desc = "Initialize molten",
+        silent = true,
       },
       {
-        "<localleader>md",
-        function()
-          local cfg = require("quarto.config").config
-          cfg.codeRunner.default_method = "slime"
-          vim.cmd("MoltenDeinit")
-        end,
+        "<localleader>mq",
+        ":MoltenDeinit<CR>",
         desc = "Stop molten",
+        silent = true,
       },
       { "<localleader>me", ":MoltenEvaluateOperator<CR>", desc = "Run operator selection", silent = true },
       { "<localleader>ml", ":MoltenEvaluateLine<CR>", desc = "Evaluate line", silent = true },

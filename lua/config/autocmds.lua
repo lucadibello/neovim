@@ -20,6 +20,10 @@ vim.api.nvim_create_autocmd("FileType", {
 -- falls back to a kernel that matches the name of the active venv (if any)
 local imb = function(e) -- init molten buffer
   vim.schedule(function()
+    -- Check if molten is loaded
+    if vim.fn.exists(":MoltenInit") == 0 then
+      return
+    end
     local kernels = vim.fn.MoltenAvailableKernels()
     local try_kernel_name = function()
       local metadata = vim.json.decode(io.open(e.file, "r"):read("a"))["metadata"]

@@ -19,6 +19,9 @@ local REQUIRED_PACKAGES = {
 -- Find a suitable Python 3.10+ executable
 local function find_python3()
   local candidates = {
+    -- default location
+    "/bin/python3",
+
     -- nix path
     "/etc/profiles/per-user/lucadibello/bin/python3",
 
